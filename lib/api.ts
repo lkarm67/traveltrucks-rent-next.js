@@ -18,6 +18,11 @@ export type CamperListResponse = {
     reviews: number;
     location: string;
     supportingText: string;
+    badges: string[];
+    vehicleEquipments: string[];
+    vehicleTypes: string[];
+    /*badge: Icon[];
+    icon: JSX.Element;*/
 };
 
 axios.defaults.baseURL = 'https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers';
