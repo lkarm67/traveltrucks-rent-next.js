@@ -1,5 +1,9 @@
 import { Camper } from "@/lib/api";
 import CamperDescription from "../CamperDescription/CamperDescription";
+import FeaturesBlock from "../FeaturesBlock/FeaturesBlock";
+import ReviewsBlock from "../ReviewsBlock/ReviewsBlock";
+import BookingForm from "../BookingForm/BookingForm";
+import React from "react";
 
 type DetailsPageBlockProps = {
     camper: Camper;
