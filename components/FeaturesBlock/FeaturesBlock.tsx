@@ -5,8 +5,8 @@ const FeaturesBlock: React.FC<{ camper: Camper }> = ({ camper }) => {
     return (
         <div className="featuresBlock">
             <ul className="featuresList">
-                {camper.features.map((feature, index) => (
-                    <li key={index}>{feature}</li>
+                {camper.features.map((feature) => (
+                    <li key={feature.id}>{feature.name}</li>
                 ))}
             </ul>
         </div>

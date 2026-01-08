@@ -21,7 +21,7 @@ const validationSchema = Yup.object().shape({
         .max(30, "Name must be 30 characters or less")
         .required("Name is required"),
     email: Yup.string()
-        .email("Invalid email")
+        .email("Invalid email format")
         .required("Email is required"),
     bookingDate: Yup.date()
         .required("Booking date is required"),
