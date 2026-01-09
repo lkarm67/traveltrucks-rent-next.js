@@ -47,9 +47,9 @@ const CamperCard: React.FC<CamperCardProps & VehicleEquipmentProps> = ({ camper,
                                 <span className={css.ratingValue}>{camper.rating}</span>
                                 <span className={css.reviewCount}>(${camper.reviews} Reviews)</span>
                             </div>
-                            
+
                             <LocationBlock location={camper.location} />
-                        
+
                         </div>
 
                         <p className={css.textSupport}>{camper.supportingText}</p>

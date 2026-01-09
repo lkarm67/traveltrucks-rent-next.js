@@ -1,4 +1,4 @@
-import { Camper } from "@/lib/api";
+import { Camper } from "@/lib/api/api";
 
 type CamperDescriptionProps = {
     camper: Camper;

@@ -1,4 +1,4 @@
-import { Camper } from "@/lib/api";
+import { Camper } from "@/lib/api/api";
 import CamperDescription from "../CamperDescription/CamperDescription";
 import FeaturesBlock from "../FeaturesBlock/FeaturesBlock";
 import ReviewsBlock from "../ReviewsBlock/ReviewsBlock";

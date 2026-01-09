@@ -1,4 +1,4 @@
-import { Camper } from "@/lib/api";
+import { Camper } from "@/lib/api/api";
 import React from "react";
 import { Formik, Form, Field, FormikHelpers, ErrorMessage } from "formik";
 import * as Yup from "yup";

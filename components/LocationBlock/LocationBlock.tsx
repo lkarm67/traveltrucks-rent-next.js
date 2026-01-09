@@ -1,16 +1,28 @@
-import { Camper } from "@/lib/api";
+import { LocationBlock } from "@/types/camper";
+import React from "react";
+import css from "./LocationBlock.module.css";
 
 type LocationBlockProps = {
-    camper: Camper;
+    locationBlock: LocationBlock;
 };
 
-const LocationBlock: React.FC<LocationBlockProps> = ({ camper }) => {
+const locationBlock: React.FC<LocationBlockProps> = ({ locationBlock }) => {
     return (
-        <div className="sidebarLocationBlock">
-            <p className="textSupport">Location</p>
-            <input className="locationInput" type="text" value={`${<span><svg className="mapIcon"></svg></span> {camper.location}}`} readOnly />
+        <div className={css.sidebarLocationBlock}>
+            <p className={css.textSupport}>Location</p>
+            <input
+                className={css.locationInput}
+                type="text"
+                value={
+                    `${<span>
+                    <svg className={css.mapIcon}></svg>
+                    <LocationBlock locationBlock={locationBlock} />
+                    </span>}`
+                }
+                placeholder="City"
+                />
         </div>
     );
 };
 
-export default LocationBlock;
+export default locationBlock;

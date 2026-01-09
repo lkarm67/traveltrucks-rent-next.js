@@ -1,4 +1,4 @@
-import { Camper } from "@/lib/api";
+import { Camper } from "@/lib/api/api";
 import React from "react";
 
 const FeaturesBlock: React.FC<{ camper: Camper }> = ({ camper }) => {

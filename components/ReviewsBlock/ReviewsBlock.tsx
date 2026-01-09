@@ -1,4 +1,4 @@
-import { Camper } from "@/lib/api";
+import { Camper } from "@/lib/api/api";
 
 const ReviewsBlock: React.FC<{ camper: Camper }> = ({ camper }) => {
     return (

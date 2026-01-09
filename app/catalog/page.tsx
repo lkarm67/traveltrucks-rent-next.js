@@ -1,4 +1,4 @@
-import { getCampers } from "@/lib/api";
+import { getCampers } from "@/lib/api/api";
 
 const CatalogPage = async () => {
     const campers = await getCampers(1, 10);
