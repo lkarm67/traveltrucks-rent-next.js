@@ -5,7 +5,7 @@ import Link from "next/link";
 import css from "./CamperCard.module.css";
 import { Camper } from "@/types/camper";
 import LocationBlock from "../LocationBlock/LocationBlock";
-import { useFavoritesStore } from "@/lib/store/useFavoritesStore";
+import { useAppStore } from "@/lib/store/appStore";
 
 type CamperCardProps = {
   camper: Camper;
@@ -13,7 +13,7 @@ type CamperCardProps = {
 
 const CamperCard: React.FC<CamperCardProps> = ({ camper }) => {
   const imageSrc = camper.images?.[0] ?? "/images/placeholder.jpg";
-  const { toggleFavorite, isFavorite } = useFavoritesStore();
+  const { toggleFavorite, isFavorite } = useAppStore();
 
   return (
     <div className={css.camperCard}>

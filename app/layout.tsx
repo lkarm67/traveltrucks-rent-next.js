@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header/Header";
 
 const inter = Inter({
-  variable: "--fonts-inter-sans-serif",
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -19,10 +19,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable}`}>
+    <html lang="en" className={inter.variable}>
+      <body>
         <Header />
-        <main>{children}</main>
+        <main className="main-content">
+          {children}
+        </main>
       </body>
     </html>
   );

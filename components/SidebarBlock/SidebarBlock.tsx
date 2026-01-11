@@ -1,58 +1,120 @@
-import { Camper, VehicleEquipment, VehicleType } from "@/types/camper";
-import React from "react";
-import css from './SidebarBlock.module.css';
+import React, { useState } from "react";
+import css from "./SidebarBlock.module.css";
+import { CatalogFilters, VehicleType } from "@/types/camper";
+
+type EquipmentFilter = {
+  [key: string]: boolean | "automatic" | "manual" | "petrol" | "diesel";
+};
 
 type SidebarBlockProps = {
-    camper: Camper;
+  filters?: CatalogFilters;
+  onSearch?: (filters: CatalogFilters) => void;
 };
 
-type VehicleEquipmentProps = {
-    vehicleEquipment: VehicleEquipment[];
-};
+const equipmentOptions = [
+  "AC",
+  "Bathroom",
+  "Kitchen",
+  "TV",
+  "Radio",
+  "Refrigerator",
+  "Microwave",
+  "Gas",
+  "Water",
+];
 
-type VehicleTypeProps = {
-    vehicleType: VehicleType[];
-};
+const vehicleTypeOptions: VehicleType[] = ["alcove", "fullyIntegrated", "van"];
 
-const SidebarBlock: React.FC<SidebarBlockProps & VehicleEquipmentProps & VehicleTypeProps> = ({ camper, vehicleEquipment, vehicleType }) => {
+const SidebarBlock: React.FC<SidebarBlockProps> = ({ filters, onSearch }) => {
+  const [location, setLocation] = useState(filters?.location || "");
+  const [equipment, setEquipment] = useState<EquipmentFilter>(filters?.equipment || {});
+  const [vehicleType, setVehicleType] = useState<VehicleType | "">(filters?.bodyType || "");
 
-    return (
-        <div className={css.sidebarContent}>
-            <div className={css.sidebarLocationBlock}>
-                <p className={css.textSupport}>Location</p>
-                <input className={css.locationInput} type="text" value={`${<span><svg className={css.mapIcon}></svg></span> {camper.location}}`} readOnly />
-            </div>
-            <p className={css.cardText}>Filter</p>
-            <div className={css.filterOptions}>
-                <h3 className={css.secondSubtitle}>Vehicle equipment</h3>
-                <div className={css.divider}></div>
-                <ul className={css.filteredCards}>
-                    {vehicleEquipment.map((vehicleEquipment) => (
-                        <li key={vehicleEquipment.id} className={css.filterOption}>
-                            <svg>{/* SVG content for vehicle equipment */}</svg>
-                            <span>{vehicleEquipment.name}</span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-            <div className={css.filterOptions}>
-                <h3 className={css.secondSubtitle}>Vehicle type</h3>
-                <div className={css.divider}></div>
-                <ul className={css.filteredCards}>
-                    {vehicleType.map((vehicleType) => (
-                        <li key={vehicleType.id} className={css.filterOption}>
-                            <svg>{/* SVG content for vehicle type */}</svg>
-                            <span>{vehicleType.name}</span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-            <button
-                type="button"
-                className={css.searchBtn}>
-                Search
-            </button>
+  const toggleEquipment = (key: string) => {
+    setEquipment((prev) => ({
+      ...prev,
+      [key]: typeof prev[key] === "boolean" ? !prev[key] : true,
+    }));
+  };
+
+  const applyFilters = () => {
+    const newFilters: CatalogFilters = {
+      location: location || undefined,
+      bodyType: vehicleType || undefined,
+      equipment,
+    };
+    if (onSearch) onSearch(newFilters);
+  };
+
+  return (
+    <div className={css.sidebarContent}>
+      {/* Location input */}
+      <div className={css.sidebarLocationBlock}>
+        <p className={css.textSupport}>Location</p>
+        <div className={css.locationWrapper}>
+          <svg className={css.mapIcon}>
+            <use href="/icons/sprite.svg#icon-location" />
+          </svg>
+          <input
+            className={css.locationInput}
+            type="text"
+            value={location}
+            placeholder="Enter location"
+            onChange={(e) => setLocation(e.target.value)}
+          />
         </div>
-    );
-}
+      </div>
+
+      {/* Equipment */}
+      <p className={css.cardText}>Filter</p>
+      <div className={css.filterOptions}>
+        <h3 className={css.secondSubtitle}>Vehicle equipment</h3>
+        <div className={css.divider}></div>
+        <div className={css.filteredCards}>
+          {equipmentOptions.map((key) => {
+            const active = equipment[key] === true;
+            return (
+              <div
+                key={key}
+                className={`${css.filterOption} ${active ? css.active : ""}`}
+                onClick={() => toggleEquipment(key)}
+              >
+                <svg>
+                  <use href={`/icons/sprite.svg#icon-${key.toLowerCase()}`} />
+                </svg>
+                <span>{key}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Vehicle type */}
+      <div className={css.filterOptions}>
+        <h3 className={css.secondSubtitle}>Vehicle type</h3>
+        <div className={css.divider}></div>
+        <div className={css.filteredCards}>
+          {vehicleTypeOptions.map((type) => (
+            <div
+              key={type}
+              className={`${css.filterOption} ${vehicleType === type ? css.active : ""}`}
+              onClick={() => setVehicleType(type)}
+            >
+              <svg>
+                <use href={`/icons/sprite.svg#icon-${type.toLowerCase()}`} />
+              </svg>
+              <span>{type}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Search button */}
+      <button type="button" className={css.searchBtn} onClick={applyFilters}>
+        Search
+      </button>
+    </div>
+  );
+};
+
 export default SidebarBlock;

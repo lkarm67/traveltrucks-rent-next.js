@@ -25,7 +25,7 @@ const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email format")
     .required("Email is required"),
-  bookingDate: Yup.date()
+  bookingDate: Yup.string()
     .required("Booking date is required"),
   comment: Yup.string()
     .max(500, "Comment must be 500 characters or less"),
@@ -57,8 +57,8 @@ const BookingForm: React.FC<BookingFormProps> = ({ camper }) => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ handleSubmit }) => (
-          <Form onSubmit={handleSubmit} className={css.form}>
+        {({ handleSubmit, isSubmitting }) => (
+          <Form className={css.form}>
             <div className={css.fieldGroup}>
               <Field
                 type="text"
@@ -98,7 +98,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ camper }) => {
               <ErrorMessage name="comment" component="span" className={css.error} />
             </div>
 
-            <button type="submit" className={css.submitButton}>
+            <button type="submit" disabled={isSubmitting} className={css.submitButton}>
               Send
             </button>
           </Form>
