@@ -1,0 +1,36 @@
+.tabsContainer {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.tabsHeader {
+  display: flex;
+  gap: 16px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.tabButton {
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.tabButtonActive {
+  color: #000;
+  border-bottom: 3px solid #ff4081; /* підкреслення активного табу */
+}
+
+.tabsContent {
+  margin-top: 16px;  
+  padding: 16px 24px;      
+  background-color: #fff;   
+  display: flex;            
+  flex-direction: column;   
+  gap: 24px;                
+  border-radius: 8px;       
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); 
+}

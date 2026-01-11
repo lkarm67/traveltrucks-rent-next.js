@@ -21,14 +21,14 @@ export const useCatalogStore = create<CatalogState>((set, get) => ({
   loading: false,
   hasMore: true,
 
-  setFilters: (filters: CatalogFilters) => set({ filters, page: 1, campers: [], hasMore: true }),
+  setFilters: (filters) => set({ filters, page: 1, campers: [], hasMore: true }),
 
   loadCampers: async (reset = false) => {
     const { page, limit, filters, campers } = get();
     set({ loading: true });
 
     try {
-      const params: any = { page, limit };
+      const params: Record<string, string | number | boolean> = { page, limit };
 
       // додаємо фільтри
       if (filters.location) params.location = filters.location;
@@ -40,8 +40,12 @@ export const useCatalogStore = create<CatalogState>((set, get) => ({
       }
 
       const API_URL = process.env.NEXT_PUBLIC_API_URL;
+      if (!API_URL) throw new Error("API URL is missing");
 
-      const { data } = await axios.get(`${API_URL}/campers`, { params });
+      const { data } = await axios.get<Camper[]>(
+        `${API_URL}/campers`,
+        { params }
+      );
 
       set({
         campers: reset ? data : [...campers, ...data],

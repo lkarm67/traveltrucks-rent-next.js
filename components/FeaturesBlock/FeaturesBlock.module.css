@@ -1,0 +1,42 @@
+.vehicleEquipmentBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.vehicleEquipmentList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.equipmentItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: #555;
+}
+
+.equipmentIcon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+}
+
+.vehicleDetailsBox {
+  margin-top: 16px;
+}
+
+.vehicleDetailsBox ul {
+  list-style: none;
+  padding: 0;
+}
+
+.vehicleDetailsBox li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
