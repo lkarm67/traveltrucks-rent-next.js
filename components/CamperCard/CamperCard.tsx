@@ -6,6 +6,9 @@ import css from "./CamperCard.module.css";
 import { Camper } from "@/types/camper";
 import LocationBlock from "../LocationBlock/LocationBlock";
 import { useAppStore } from "@/lib/store/appStore";
+import Icon from "../Icon/Icon";
+import CamperFeatures from "../CamperFeatures/CamperFeatures";
+import { VehicleEquipment, VehicleEquipmentKey } from "@/types/camper";
 
 type CamperCardProps = {
   camper: Camper;
@@ -41,18 +44,14 @@ const CamperCard: React.FC<CamperCardProps> = ({ camper }) => {
               aria-label="Add to favorites"
             >
               {/* іконка серця зі спрайта */}
-              <svg className={isFavorite(camper.id) ? css.heartActive : css.heartIcon}>
-                <use href="#icon-heart" />
-              </svg>
+              <Icon name={isFavorite(camper.id) ? "icon-red-heart" : "icon-blackheart"} />
             </button>
           </div>
         </div>
 
         <div className={css.detailsBox}>
           <div className={css.reviewsBox}>
-            <svg className={css.starIcon}>
-              <use href="#icon-star" />
-            </svg>
+            <Icon name="icon-yellow-star" className={css.starIcon} />
 
             <span className={css.ratingValue}>
               {camper.rating.rating}
@@ -68,6 +67,10 @@ const CamperCard: React.FC<CamperCardProps> = ({ camper }) => {
 
         {camper.description && (
           <p className={css.description}>{camper.description}</p>
+        )}
+
+        {camper.equipment && (
+            <CamperFeatures equipment={camper.equipment as VehicleEquipmentKey[]} />
         )}
 
         <Link

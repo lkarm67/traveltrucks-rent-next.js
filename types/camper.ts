@@ -30,6 +30,18 @@ export type VehicleEquipment = {
   water?: boolean;
 };
 
+export type VehicleEquipmentKey =
+  | "kitchen"
+  | "AC"
+  | "petrol"
+  | "gasStove"
+  | "bathroom"
+  | "microwave"
+  | "radio"
+  | "TV"
+  | "automatic"
+  | "refrigerator"
+  | "water";
 
 export type VehicleType = "van" | "fullyIntegrated" | "alcove";
 

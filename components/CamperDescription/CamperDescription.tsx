@@ -1,6 +1,7 @@
 import { Camper } from "@/types/camper";
 import React from "react";
 import css from "./CamperDescription.module.css";
+import Icon from "../Icon/Icon";
 import CamperGallery from "../CamperGallery/CamperGallery";
 import LocationBlock from "../LocationBlock/LocationBlock";
 
@@ -15,13 +16,9 @@ const CamperDescription: React.FC<CamperDescriptionProps> = ({ camper }) => {
         <h2 className={css.camperSubtitleText}>{camper.name}</h2>
 
         <div className={css.detailsBox}>
-          {/* Рейтинг */}
+          {/* Rating */}
           <div className={css.reviewsBox}>
-            <span className={css.starIcon}>
-              <svg>
-                <use href="/icons/sprite.svg#star-fill" />
-              </svg>
-            </span>
+            <Icon name="icon-yellow-star" className={css.starIcon} />
 
             <span className={css.ratingValue}>
               {camper.rating.rating.toFixed(1)}
@@ -32,22 +29,22 @@ const CamperDescription: React.FC<CamperDescriptionProps> = ({ camper }) => {
             </span>
           </div>
 
-          {/* Локація */}
+          {/* Location */}
           <LocationBlock location={camper.location} />
 
-          {/* Ціна */}
+          {/* Price */}
           <p className={css.priceText}>
             €{camper.pricePerDay.toFixed(2)}
           </p>
         </div>
       </div>
 
-      {/* Галерея */}
+      {/* Gallery */}
       {camper.images && camper.images.length > 0 && (
         <CamperGallery images={camper.images} limit={4} />
       )}
 
-      {/* Опис */}
+      {/* Description */}
       {camper.description && (
         <p className={css.textSupport}>{camper.description}</p>
       )}

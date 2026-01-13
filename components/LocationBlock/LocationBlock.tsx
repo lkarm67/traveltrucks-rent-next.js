@@ -3,18 +3,19 @@ import css from "./LocationBlock.module.css";
 import { VehicleLocation } from "@/types/camper";
 
 type LocationBlockProps = {
-  location: VehicleLocation;
+  location?: VehicleLocation;
 };
 
 const LocationBlock: React.FC<LocationBlockProps> = ({ location }) => {
   return (
     <div className={css.locationBlock}>
-      <svg className={css.mapIcon}>
-        <use href="#icon-map" />
+      <svg className={css.mapIcon} aria-hidden="true">
+        <use href="/images/sprite.svg#icon-map" />
       </svg>
 
       <span className={css.locationText}>
-        {location.city}, {location.country}
+        {location?.city ?? "City not specified"},{" "}
+        {location?.country ?? "Country not specified"}
       </span>
     </div>
   );
