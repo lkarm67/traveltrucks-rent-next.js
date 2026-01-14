@@ -1,4 +1,12 @@
+import HeroBlock from "@/components/HeroBlock/HeroBlock";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <main>
+          <HeroBlock />      
+      </main>;
+    </>
+  ) 
 }
 export default Home;

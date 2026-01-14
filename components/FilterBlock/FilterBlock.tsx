@@ -10,12 +10,22 @@ type FilterBlockProps = {
 };
 
 const FilterBlock: React.FC<FilterBlockProps> = ({ campers }) => {
+  const safeCampers: Camper[] = Array.isArray(campers) ? campers : [];
+
   const vehicleEquipment = Array.from(
-    new Set(campers.flatMap(camper => camper.equipment ?? []))
+    new Set(
+      safeCampers.flatMap(camper =>
+        Object.entries(camper.equipment ?? {})
+          .filter(([, value]) => value)
+          .map(([key]) => key)
+      )
+    )
   );
 
   const vehicleType = Array.from(
-    new Set(campers.map(camper => camper.vehicleType).filter(Boolean))
+    new Set(
+      safeCampers.map(camper => camper.vehicleType).filter(Boolean)
+    )
   );
 
   return (
@@ -29,14 +39,11 @@ const FilterBlock: React.FC<FilterBlockProps> = ({ campers }) => {
 
         <div className="filteredCards">
           {vehicleEquipment.map(item => (
-            <div key={String(item)} className="filterOption">
-              {equipmentIcons[item as string] && (
-                <Icon
-                  name={equipmentIcons[item as string]}
-                  className="filterIcon"
-                />
+            <div key={item} className="filterOption">
+              {equipmentIcons[item] && (
+                <Icon name={equipmentIcons[item]} className="filterIcon" />
               )}
-              <span>{String(item)}</span>
+              <span>{item}</span>
             </div>
           ))}
         </div>
@@ -51,10 +58,7 @@ const FilterBlock: React.FC<FilterBlockProps> = ({ campers }) => {
           {vehicleType.map(item => (
             <div key={item} className="filterOption">
               {vehicleTypeIcons[item] && (
-                <Icon
-                  name={vehicleTypeIcons[item]}
-                  className="filterIcon"
-                />
+                <Icon name={vehicleTypeIcons[item]} className="filterIcon" />
               )}
               <span>{item}</span>
             </div>
@@ -64,5 +68,4 @@ const FilterBlock: React.FC<FilterBlockProps> = ({ campers }) => {
     </div>
   );
 };
-
 export default FilterBlock;

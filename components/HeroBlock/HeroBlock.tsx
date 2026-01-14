@@ -1,18 +1,27 @@
 "use client";
 
-import css from './Heroblock.module.css'; 
+import css from './Heroblock.module.css';
+import Link from 'next/link'; 
 
 const HeroBlock = () => { 
     return (
-        <section className={css.heroBlock}>
-            <div className={css.heroImage}></div>
-            <div className={css.heroContentContainer}>
-              <div className={css.heroContent}>
+      <section className={css.heroBlock}>
+        <div className={css.container}>
+          <div className={css.heroContent}>
+            <div className={css.heroTitleBox}>
                 <h1 className={css.heroTitle}>Campers of your dreams</h1>
-                <h2 className={css.heroDescription}>You can find everything you want in our catalog</p>
-              </div>
-              <button className={css.heroButton}>View Now</button>
+                <p className={css.heroDescription}>You can find everything you want in our catalog</p>
             </div>
-        </section>
+            <Link
+                href="/catalog"
+                className={css.button}
+            >
+              View Now
+            </Link>
+          </div>
+        </div>
+      </section>
     )
 }
+
+export default HeroBlock;

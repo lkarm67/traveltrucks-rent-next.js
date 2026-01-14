@@ -83,6 +83,15 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: "app-store",
+      version: 1,
+      migrate: (persistedState: any, version) => {
+        return {
+          ...persistedState,
+          campers: Array.isArray(persistedState.campers)
+            ? persistedState.campers
+            : [],
+        };
+      },
     }
   )
 );

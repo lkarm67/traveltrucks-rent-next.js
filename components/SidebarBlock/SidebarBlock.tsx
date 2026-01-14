@@ -53,13 +53,13 @@ const SidebarBlock: React.FC<SidebarBlockProps> = ({ filters, onSearch }) => {
         <p className={css.textSupport}>Location</p>
         <div className={css.locationWrapper}>
           <svg className={css.mapIcon}>
-            <use href="/icons/sprite.svg#icon-location" />
+            <use href="/icons/sprite.svg#icon-map" />
           </svg>
           <input
             className={css.locationInput}
             type="text"
             value={location}
-            placeholder="Enter location"
+            placeholder="City"
             onChange={(e) => setLocation(e.target.value)}
           />
         </div>

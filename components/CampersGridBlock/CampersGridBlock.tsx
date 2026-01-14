@@ -1,38 +1,40 @@
-import { Camper } from "@/type/camper";
+import { Camper } from "@/types/camper";
 import LocationBlock from "../LocationBlock/LocationBlock";
 import FilterBlock from "../FilterBlock/FilterBlock";
 import SidebarBlock from "../SidebarBlock/SidebarBlock";
 import CamperCard from "../CamperCard/CamperCard";
 
-type CatalogPageBlockProps = {
-    campers: Camper[];
+type CampersGridBlockProps = {
+  campers: Camper[];
+  onLoadMore?: () => void;
+  isLastPage?: boolean;
 };
 
-const CatalogPageBlock: React.FC<CatalogPageBlockProps> = ({
-    campers,
-    onLoadMore,
-    isLastPage
+const CampersGridBlock: React.FC<CampersGridBlockProps> = ({
+  campers = [],
+  onLoadMore,
+  isLastPage
 }) => {
-    return (
-        <div className="catalogPageBlock">
-            <SidebarBlock />
-            <LocationBlock />
-            <FilterBlock />
-            
-            <ul className="camperList">
-                {campers.map((camper) => (
-                    <li key={camper.id}>
-                        <CamperCard camper={camper} />
-                    </li>
-                ))}
-            </ul>
+  return (
+    <div className="campersGridBlock">
+      <SidebarBlock />
+      <LocationBlock />
+      <FilterBlock campers={campers} />
 
-            {!isLastPage && (
-               <button onClick={onLoadMore}>Show more</button>
-            )}
+      <ul className="campersList">
+        {Array.isArray(campers) &&
+          campers.map(camper => (
+            <li key={camper.id}>
+              <CamperCard camper={camper} />
+            </li>
+          ))}
+      </ul>
 
-        </div>
-    );
+      {!isLastPage && onLoadMore && (
+        <button onClick={onLoadMore}>Show more</button>
+      )}
+    </div>
+  );
 };
 
-export default CatalogPageBlock;
+export default CampersGridBlock;
