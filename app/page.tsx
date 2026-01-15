@@ -5,7 +5,7 @@ const Home = () => {
     <>
       <main>
           <HeroBlock />      
-      </main>;
+      </main>
     </>
   ) 
 }
