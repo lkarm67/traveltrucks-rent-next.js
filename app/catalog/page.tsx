@@ -16,7 +16,7 @@ export default function CatalogPage() {
     loadCampers,
   } = useAppStore();
 
-  // перший завантаження сторінки
+  // перше завантаження сторінки
   useEffect(() => {
     loadCampers(true);
   }, []);
@@ -34,10 +34,11 @@ export default function CatalogPage() {
 
   return (
     <section className="catalogPage">
-      <div className="container catalogLayout">
-        {/* SIDEBAR */}
-        <SidebarBlock filters={filters} onSearch={handleSearch} />
-
+      <div className=" catalogContainer">
+        <aside className="sidebar">
+            {/* SIDEBAR */}
+            <SidebarBlock filters={filters} onSearch={handleSearch} />
+        </aside>
         {/* MAIN CONTENT */}
         <div className="catalogContent">
           <CampersGridBlock campers={campers} />

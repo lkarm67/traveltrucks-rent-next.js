@@ -52,7 +52,7 @@ const SidebarBlock: React.FC<SidebarBlockProps> = ({ filters, onSearch }) => {
       <div className={css.sidebarLocationBlock}>
         <p className={css.textSupport}>Location</p>
         <div className={css.locationWrapper}>
-          <svg className={css.mapIcon}>
+          <svg className={css.mapIcon} width="18" height="20">
             <use href="/icons/sprite.svg#icon-map" />
           </svg>
           <input
@@ -79,10 +79,10 @@ const SidebarBlock: React.FC<SidebarBlockProps> = ({ filters, onSearch }) => {
                 className={`${css.filterOption} ${active ? css.active : ""}`}
                 onClick={() => toggleEquipment(key)}
               >
-                <svg>
+                <svg className={css.filterIcon}>
                   <use href={`/icons/sprite.svg#icon-${key.toLowerCase()}`} />
                 </svg>
-                <span>{key}</span>
+                <span className={css.filterKey}>{key}</span>
               </div>
             );
           })}
@@ -100,7 +100,7 @@ const SidebarBlock: React.FC<SidebarBlockProps> = ({ filters, onSearch }) => {
               className={`${css.filterOption} ${vehicleType === type ? css.active : ""}`}
               onClick={() => setVehicleType(type)}
             >
-              <svg>
+              <svg className={css.filterIcon}>
                 <use href={`/icons/sprite.svg#icon-${type.toLowerCase()}`} />
               </svg>
               <span>{type}</span>
@@ -110,7 +110,7 @@ const SidebarBlock: React.FC<SidebarBlockProps> = ({ filters, onSearch }) => {
       </div>
 
       {/* Search button */}
-      <button type="button" className={css.searchBtn} onClick={applyFilters}>
+      <button type="button" className={css.button} onClick={applyFilters}>
         Search
       </button>
     </div>

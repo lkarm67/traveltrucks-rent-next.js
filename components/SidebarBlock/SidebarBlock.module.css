@@ -1,0 +1,131 @@
+.sidebarLocationBlock{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.textSupport{
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--gray);
+}
+
+.locationWrapper{
+  border-radius: 12px;
+  padding: 16px 20px;
+  width: 360px;
+  height: 56px;
+  background: var(--inputs);
+}
+
+.mapIcon{
+  width: 20px;
+  height: 20px;
+}
+
+.locationInput{
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--main);
+}
+
+.cardText{
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--text);
+  margin-bottom: 36px;
+}
+
+.filterOptions{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.secondSubtitle{
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+}
+
+.divider{
+  stroke-width: 1px;
+  stroke: var(--gray-light);
+}
+
+.filteredCards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 16px 40px;
+}
+
+.filterOption{
+  border: 1px solid var(--gray-light);
+  border-radius: 12px;
+  padding: 16px 40px;
+  width: 112px;
+  height: 96px; 
+  mix-blend-mode: multiply;  
+}
+
+.filterOption .active{
+  border: 1px solid var(--button);
+  border-radius: 12px;
+  padding: 16px 40px;
+  width: 112px;
+  height: 96px; 
+  mix-blend-mode: multiply;
+}
+
+.filterIcon{
+  width: 32px;
+  height: 32px;
+}
+
+.filterIcon{
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--main);  
+}
+
+.secondSubtitle{
+
+}
+
+.button{
+    border-radius: 200px;
+    padding: 16px 48px;
+    width: 173px;
+    height: 56px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    background-color: var(--button);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.button:hover,
+.button:focus{
+    background-color: var(--button-hover);
+}

@@ -1,0 +1,37 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  padding: 24px;
+}
+
+.title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.description {
+  max-width: 420px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.button {
+  margin-top: 24px;
+  padding: 10px 20px;
+  border-radius: 24px;
+  border: none;
+  background: #101828;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
