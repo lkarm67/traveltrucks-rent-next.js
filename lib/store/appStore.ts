@@ -24,15 +24,26 @@ export const useAppStore = create<AppState>()(
   persist(
     (set, get) => ({
       campers: [],
+      currentCamper: null,
       page: 1,
       limit: 4,
-      filters: {},
+      filters: {
+        location: "",
+        form: "",
+        AC: false,
+        transmission: "",
+        kitchen: false,
+        TV: false,
+        bathroom: false,
+      },
       loading: false,
       hasMore: true,
       favorites: [],
 
       // --- Фільтри ---
-      setFilters: (filters) => set({ filters, page: 1, campers: [], hasMore: true }),
+      setFilters: (filters) => set(
+        { filters, page: 1, campers: [], hasMore: true }
+      ),
 
       // --- Завантаження списку ---
       loadCampers: async (reset = false) => {

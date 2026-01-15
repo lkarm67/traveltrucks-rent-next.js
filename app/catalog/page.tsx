@@ -33,13 +33,13 @@ export default function CatalogPage() {
   };
 
   return (
-    <section className="catalog-page">
-      <div className="container catalog-layout">
+    <section className="catalogPage">
+      <div className="container catalogLayout">
         {/* SIDEBAR */}
         <SidebarBlock filters={filters} onSearch={handleSearch} />
 
         {/* MAIN CONTENT */}
-        <div className="catalog-content">
+        <div className="catalogContent">
           <CampersGridBlock campers={campers} />
           {hasMore && <LoadMore onClick={handleLoadMore} loading={loading} />}
           {!hasMore && <p>No more campers</p>}

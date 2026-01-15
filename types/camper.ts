@@ -2,8 +2,8 @@ export type Camper = {
   id: string;
   name: string;
   pricePerDay: number;
-  images?: string[];
-
+  /*images?: string[];*/
+  gallery: CamperImage[];
   location: VehicleLocation;
   vehicleType: VehicleType;
   equipment: VehicleEquipment;
@@ -18,7 +18,7 @@ export type Camper = {
 
 export type VehicleEquipment = {
   transmission?: "automatic" | "manual";
-  engine?: "petrol" | "diesel";
+  engine?: "petrol" | "diesel" | "hybrid";
   AC?: boolean;
   bathroom?: boolean;
   kitchen?: boolean;
@@ -91,6 +91,20 @@ export function getRatingFromReviews(reviews?: Review[]): VehicleRating {
 
 export interface CatalogFilters {
   location?: string; // input місто
-  equipment?: Partial<Record<keyof VehicleEquipment, boolean>>;
+  equipment?: Partial<Record<keyof FilterState, boolean>>;
   bodyType?: VehicleType;
 }
+
+export interface CamperImage {
+  original?: string;
+  thumb?: string;
+}
+
+export interface FilterState {
+  form: string;
+  AC: boolean;
+  transmission: string;
+  kitchen: boolean;
+  TV: boolean;
+  bathroom: boolean;
+} 
